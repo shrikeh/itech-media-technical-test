@@ -18,7 +18,7 @@ RUN php /bin/composer.phar install ${COMPOSER_BUILD} --classmap-authoritative
 FROM shrikeh/php7.4-cli:latest as consumer
 ENV APP_ENV test
 
-WORKDIR /app
+WORKDIR /code
 COPY --from=build-consumer /build .
 
 ENTRYPOINT ["php", "application/bin/console", "messenger:consume", "-vv"]

@@ -2,6 +2,19 @@
 version: "3.7"
 
 services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: ./tools/docker/frontend/Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - web_frontend
+    volumes:
+      - type: tmpfs
+        target: /var/cache/nginx
+      - type: tmpfs
+        target: /var/run/nginx
   rabbitmq:
     image: rabbitmq:3.8.1
     expose:
@@ -13,11 +26,11 @@ services:
     build:
       context: ./
       dockerfile: ./tools/docker/php/Dockerfile
-    image: shrikeh/php7.4-cli:latest
-  cli:
+    image: shrikeh/php7.4-base:latest
+  app:
     build:
       context: ./
-      dockerfile: ./tools/docker/cli/Dockerfile
+      dockerfile: tools/docker/app/Dockerfile
     environment:
       APP_ENV:
       APP_DEBUG:
@@ -45,3 +58,4 @@ services:
 networks:
   amqp_consumers:
   amqp_senders:
+  web_frontend:

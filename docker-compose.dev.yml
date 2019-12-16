@@ -50,7 +50,7 @@ services:
       context: ./
       dockerfile: tools/docker/dev/security-check/Dockerfile
     volumes:
-      - .:/security-check
+      - .:/code
   phpspec:
     build:
       context: ./

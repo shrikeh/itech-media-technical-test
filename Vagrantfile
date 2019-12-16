@@ -18,22 +18,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       :ip => '192.168.15.107',
       :host_memory => 1024,
       :host_cpus => 2,
-      :hostname => 'php74.shrikeh.vagrant',
+      :hostname => 'techtest.shrikeh.vagrant',
       :synced_folder => '/vagrant',
       :user => 'vagrant'
     },
-      :symfony => {
+    :symfony => {
       :cache_dir => '/cache'
     }
   }
 
-  config.vm.define 'php74', primary: true do |php74|
+  config.vm.define :php74, primary: true do |php74|
 
     php74.vm.hostname = config.user.vm.hostname
     php74.vm.box = config.user.vm.php74_box
 
+    php74.vm.network :private_network, ip: config.user.vm.ip
+
+    config.hostsupdater.aliases = [
+      'php74.shrikeh.vagrant'
+    ]
+
     # Disable the default synced folder...
-    config.vm.synced_folder './', '/vagrant', disabled: true
+    php74.vm.synced_folder './', '/vagrant', disabled: true
 
     # Now use the one as set in the user config. This may be the same as above but there is no documented way
     # to change the default synced folder.

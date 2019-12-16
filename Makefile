@@ -6,6 +6,10 @@ ifndef VERBOSE
 .SILENT:
 endif
 
+init:
+	cp vagrantuser.example.yml .vagrantuser
+	cp .env.dist .env.local
+
 vagrant-rebuild:
 	vagrant halt
 	vagrant destroy -f

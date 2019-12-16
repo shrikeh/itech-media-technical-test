@@ -7,8 +7,8 @@ vm:
   ip: "192.168.15.107"
   host_memory: 1024
   host_cpus: 2
-  hostname: "php74.shrikeh.vagrant"
-  synced_folder: "/foo"
+  hostname: "itech-media.shrikeh.vagrant"
+  synced_folder: "/code"
   user: "vagrant"
 symfony:
   cache_dir: '/cache'
