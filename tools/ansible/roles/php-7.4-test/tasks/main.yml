@@ -1,0 +1,6 @@
+---
+- name: Install xdebug and requirements
+  apt:
+    pkg:
+      - php-xdebug
+    state: latest

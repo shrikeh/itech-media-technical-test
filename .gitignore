@@ -1,0 +1,9 @@
+application/bin/symfony
+/vendor
+.*
+*.iml
+*.log
+!.git*
+!.editorconfig
+!.phpspec
+!.env.dist

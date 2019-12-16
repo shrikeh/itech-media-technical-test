@@ -1,0 +1,16 @@
+---
+- hosts: php_cli
+  become: yes
+  roles:
+    - php-7.4-cli
+
+- hosts: php_test
+  become: yes
+  roles:
+    - docker
+    - php-7.4-cli
+    - php-7.4-test
+
+- hosts: vagrant
+  roles:
+    - vagrant

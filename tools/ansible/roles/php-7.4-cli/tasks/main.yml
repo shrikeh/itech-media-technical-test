@@ -1,0 +1,44 @@
+---
+- name: Remove all previous versions of php
+  apt:
+    name: php
+    state: absent
+
+- name: Update apt
+  apt:
+    name: software-properties-common
+    state: latest
+
+- name: Add the ondrej/php repo
+  apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+    update_cache: yes
+
+- name: Install php 7.4 and dev tools
+  apt:
+    pkg:
+      - php7.4-cli
+      - php7.4-xml
+      - php7.4-zip
+      - php7.4-json
+      - pkg-php-tools
+      - php7.4-dev
+      - php7.4-mbstring
+      - php-amqp
+    state: latest
+
+- name: Install composer
+  apt:
+    name: composer
+    state: latest
+
+- name: Install DS library
+  pear:
+    name: pecl/ds
+    state: latest
+
+- name: Add ds to cli user
+  template:
+    dest: "{{ php74_cli_ds_ini_path }}"
+    src: 'templates/ds.ini.j2'
