@@ -1,4 +1,4 @@
-FROM shrikeh/php7.4-cli-dev:latest as behat
+FROM shrikeh/php7.4-base-dev:latest as behat
 
 WORKDIR /code
 

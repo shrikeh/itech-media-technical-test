@@ -43,7 +43,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Now use the one as set in the user config. This may be the same as above but there is no documented way
     # to change the default synced folder.
-    php74.vm.synced_folder './', config.user.vm.synced_folder, create: true, disabled: false,
+    php74.vm.synced_folder './', config.user.vm.synced_folder,
+       create: true,
+       disabled: false,
        owner: config.user.vm.user,
        group: 'www-data',
        mount_options: ['dmode=775,fmode=774']

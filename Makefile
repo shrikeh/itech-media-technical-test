@@ -24,7 +24,7 @@ run: down base-build
 	sleep 10s
 	docker-compose up
 
-composer:
+composer: base-dev
 	./tools/bin/run_test.sh composer
 
 build-docker: down base-dev

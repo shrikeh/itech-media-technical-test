@@ -1,4 +1,4 @@
-ARG PHP_TAG="7.4.0RC5-cli-alpine"
+ARG PHP_TAG="7.4.1-cli-alpine3.11"
 
 FROM php:${PHP_TAG} as base
 

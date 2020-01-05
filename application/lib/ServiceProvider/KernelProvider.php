@@ -50,7 +50,6 @@ final class KernelProvider implements ServiceProviderInterface
     public static function create(Container $container = null): Container
     {
         $container = $container ?? new Container();
-
         $container->register(new self());
 
         return $container;

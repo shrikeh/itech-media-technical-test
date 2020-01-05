@@ -1,4 +1,4 @@
-FROM shrikeh/php7.4-cli-dev:latest as phpspec
+FROM shrikeh/php7.4-base-dev:latest as phpspec
 
 ENV XDEBUG_FILTER="./build/xdebug-filter.php"
 

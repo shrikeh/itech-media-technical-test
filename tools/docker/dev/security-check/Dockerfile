@@ -1,4 +1,4 @@
-FROM shrikeh/php7.4-cli-dev:latest as security-check
+FROM shrikeh/php7.4-base-dev:latest as security-check
 
 WORKDIR /security-check
 

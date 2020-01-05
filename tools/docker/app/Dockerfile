@@ -1,4 +1,5 @@
-FROM shrikeh/php7.4-base:latest as build-cli
+FROM shrikeh/php7.4-base:latest as build-app
+
 ARG COMPOSER_BUILD='--no-dev'
 
 RUN apk add --no-cache git
@@ -15,10 +16,10 @@ COPY ./composer.lock .
 COPY ./application ./application
 RUN php /bin/composer.phar install ${COMPOSER_BUILD} --classmap-authoritative
 
-FROM shrikeh/php7.4-cli:latest as cli
+FROM shrikeh/php7.4-base:latest as app
 
 WORKDIR /code
 
-COPY --from=build-cli /build .
+COPY --from=build-app /build .
 
 ENTRYPOINT ["php", "application/bin/console", "shrikeh:helloworld"]

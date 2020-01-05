@@ -6,7 +6,7 @@ services:
     build:
       context: ./
       dockerfile: tools/docker/dev/php-base/Dockerfile
-    image: shrikeh/php7.4-cli-dev:latest
+    image: shrikeh/php7.4-base-dev:latest
   composer:
     build:
       context: ./

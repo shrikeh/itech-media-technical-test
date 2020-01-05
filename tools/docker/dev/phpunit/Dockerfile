@@ -1,4 +1,4 @@
-FROM shrikeh/php7.4-cli-dev:latest as phpunit
+FROM shrikeh/php7.4-base-dev:latest as phpunit
 
 ENV XDEBUG_FILTER="./build/xdebug-filter.php"
 
