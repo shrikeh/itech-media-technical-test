@@ -15,4 +15,6 @@ framework:
           max_delay: 0
     routing:
       App\Message\HelloWorldMessage: amqp
+  router:
+    strict_requirements: null
 

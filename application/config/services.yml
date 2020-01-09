@@ -1,0 +1,51 @@
+---
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  # makes classes in app/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  App\:
+    resource: '%kernel.project_dir%/app/*'
+    exclude: '%kernel.project_dir%/app/{Kernel,DependencyInjection,Entity,Migrations,ServiceProvider}'
+  App\Controller\:
+    resource: '%kernel.project_dir%/app/Controller/*'
+    tags: ['controller.service_arguments']
+  TechTest\BusinessLogic\:
+    resource: '%kernel.project_dir%/src/*'
+
+  App\Repository\TwitterGuzzleRepository:
+    arguments:
+      - '@app.client.twitter'
+      - '@App\Repository\Parser\TweetParserInterface'
+
+  App\Repository\Parser\TweetParserInterface: '@App\Repository\Parser\ApiParser'
+  App\Repository\Parser\ApiParser: ~
+
+  GuzzleHttp\HandlerStack:
+    factory: [GuzzleHttp\HandlerStack, create]
+    arguments:
+      - '@GuzzleHttp\Handler\CurlMultiHandler'
+    calls:
+      - method: push
+        arguments:
+          - '@GuzzleHttp\Subscriber\Oauth\Oauth1'
+
+  GuzzleHttp\Subscriber\Oauth\Oauth1:
+    arguments:
+      - consumer_key: '%app.twitter.consumer_key%'
+        consumer_secret: '%app.twitter.consumer_secret%'
+        token: '%app.twitter.oauth.access_token%'
+        token_secret: '%app.twitter.oauth.secret%'
+
+  GuzzleHttp\Handler\CurlMultiHandler: ~
+
+  app.client.twitter:
+    class: GuzzleHttp\Client
+    arguments:
+      -  timeout: '5.0'
+         base_uri: '%app.twitter.api.host_name%/%app.twitter.api.version%/'
+         handler: '@GuzzleHttp\HandlerStack'
+         auth: oauth

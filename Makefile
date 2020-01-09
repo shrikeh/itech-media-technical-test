@@ -15,14 +15,14 @@ vagrant-rebuild:
 	vagrant destroy -f
 	vagrant up
 
-run: down base-build
+run: down run-app
+
+run-app:
   # doing it in this order solves race condition but it isn't a great solution.
   # containers should wait until amqp is available ideally.
-	docker-compose run -d --name rabbitmq rabbitmq
-	docker-compose build --parallel consumer cli
-	echo 'Sleeping 10 seconds to allow rabbitrmq to fire up...'
-	sleep 10s
-	docker-compose up
+	docker volume prune -f
+	docker-compose build --no-cache --parallel app web-server
+	docker-compose up web-server
 
 composer: base-dev
 	./tools/bin/run_test.sh composer
@@ -57,8 +57,11 @@ phpcs:
 phpunit:
 	./tools/bin/run_test.sh phpunit
 
-security-check:
+security-check: symfony-cli
 	./tools/bin/run_test.sh security-check
+
+symfony-cli: base-dev
+	docker-compose -f docker-compose.yml -f docker-compose.dev.yml run symfony-cli
 
 behat:
 	./tools/bin/run_test.sh behat

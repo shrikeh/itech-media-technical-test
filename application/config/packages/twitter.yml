@@ -1,0 +1,8 @@
+---
+parameters:
+  app.twitter.oauth.access_token: '%env(string:TWITTER_OAUTH_ACCESS_TOKEN)%'
+  app.twitter.oauth.secret: '%env(string:TWITTER_OAUTH_SECRET)%'
+  app.twitter.consumer_key: '%env(string:TWITTER_CONSUMER_KEY)%'
+  app.twitter.consumer_secret: '%env(string:TWITTER_CONSUMER_SECRET)%'
+  app.twitter.api.version: '1.1'
+  app.twitter.api.host_name: 'https://api.twitter.com'

@@ -1,4 +1,3 @@
-FROM nginx
-COPY dist /dist
+FROM node as build
 
-COPY ./tools/docker/frontend/conf.d/default.conf /etc/nginx/conf.d/default.conf
+CMD exit 0;

@@ -35,7 +35,9 @@ final class NamespaceCollection
         $this->namespaces = new Map();
 
         foreach ($data as $namespace => $metadata) {
-            $this->addNamespace($namespace, $metadata);
+            if ($namespace instanceof ClassNamespace) {
+                $this->addNamespace($namespace, $metadata);
+            }
         }
     }
 
@@ -45,7 +47,9 @@ final class NamespaceCollection
      */
     public function match(ClassNamespace $namespace): ClassNamespace
     {
-        return $this->getMatchingNamespaces($namespace)->first()->key;
+        $matches = $this->getMatchingNamespaces($namespace);
+
+        return $matches->first()->key;
     }
 
 

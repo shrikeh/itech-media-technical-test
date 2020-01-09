@@ -7,4 +7,4 @@ RUN sh ./install-composer.sh
 
 WORKDIR /code
 
-CMD php /bin/composer.phar install --optimize-autoloader
+ENTRYPOINT php /bin/composer.phar install --optimize-autoloader

@@ -1,0 +1,5 @@
+---
+twitter:
+  path: /twitter
+  controller: App\Controller\TwitterController
+  methods: GET
