@@ -1,3 +1,4 @@
-FROM node as build
+FROM node:latest as build
 
-CMD exit 0;
+WORKDIR /site
+CMD yarn build;

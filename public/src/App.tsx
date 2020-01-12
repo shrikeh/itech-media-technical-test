@@ -1,9 +1,12 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Twitter } from "./components/Twitter";
+'use strict';
 
-const e = React.createElement;
+import * as React from "react";
+import { render } from "react-dom";
+import { Timeline } from "./components/Timeline";
 
 const domContainer = document.querySelector('#itech-media');
 
-ReactDOM.render(e(Twitter), domContainer);
+render(
+  <Timeline />,
+  domContainer
+);

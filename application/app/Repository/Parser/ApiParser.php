@@ -36,7 +36,7 @@ final class ApiParser implements TweetParserInterface
         $user = $tweet->user;
         return new User(
             new Uri($user->url),
-            new Uri($user->profile_background_image_url_https),
+            new Uri($user->profile_image_url_https),
             $user->name,
             $user->screen_name
         );

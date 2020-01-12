@@ -6,6 +6,8 @@ services:
     build:
       context: ./
       dockerfile: tools/docker/frontend/Dockerfile
+    volumes:
+      - ./:/site
   web-server:
     build:
       context: ./
@@ -15,6 +17,7 @@ services:
     networks:
       - web_frontend
     volumes:
+      - ./dist:/dist
       - type: tmpfs
         target: /var/cache/nginx
       - type: tmpfs

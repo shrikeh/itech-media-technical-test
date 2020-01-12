@@ -8,12 +8,12 @@ interface Props {
   text: string;
 }
 
-export class Tweet extends React.Component<Props> {
+export class TimelineTweet extends React.Component<Props> {
   render () {
     const { screenName, imageUrl, text } = this.props;
     return (
       <div>
-        <img src="{imageUrl}" />
+        <img src={imageUrl} alt={screenName}/>
         <div>{screenName}</div>
         <div>{text}</div>
       </div>
