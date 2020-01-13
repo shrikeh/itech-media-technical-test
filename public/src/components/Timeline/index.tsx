@@ -1,7 +1,7 @@
 'use strict';
 
 import * as React from 'react';
-import { TimelineTweet } from "../TimelineTweet";
+import { TimelineTweet } from "@app/components/TimelineTweet";
 import { Tweet } from '@app/types/Tweet';
 
 interface Props {}

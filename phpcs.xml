@@ -4,6 +4,7 @@
   <rule ref="PSR12" />
   <file>application</file>
   <file>tests</file>
+  <exclude-pattern>*.js</exclude-pattern>
   <!-- Wherever Symfony stores the precompiled container, we don't care about it -->
   <exclude-pattern>*/cache/*</exclude-pattern>
   <!-- phpspec uses it's very own special coding standard -->

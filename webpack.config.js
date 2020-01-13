@@ -15,8 +15,11 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
+    alias: {
+      "@app/components": path.resolve(__dirname, "public/src/components")
+    },
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".js", ".jsx", ".ts", ".tsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"]
   },
 
   module: {
@@ -32,11 +35,15 @@ module.exports = {
         ]
       },
       {
-        test: /\.ts(x?)$/,
+        test: /\.tsx$/,
+        loader: 'babel-loader!ts-loader',
+      },
+      {
+        test: /\.ts$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
+            loader: 'awesome-typescript-loader'
           }
         ]
       },

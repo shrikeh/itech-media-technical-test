@@ -8,19 +8,20 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "baseUrl": "./public/src",
+    "baseUrl": "./",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "paths": {
-      "@app/*": ["*"]
+      "@app/components/*": ["public/src/components/*"],
+      "@app/types/*": ["public/src/types/*"]
     }
   },
   "include": [
     "./node_modules/@types",
-    "./public/src/**/*.ts",
+    "./public/src/**/*",
     "tests/jest"
   ],
   "types": [

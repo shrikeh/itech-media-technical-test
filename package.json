@@ -13,8 +13,10 @@
     "@types/node": "^13.1.6",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.19.1",
     "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.6",
     "babel-preset-react-app": "^3.1.2",
     "create-react-app": "^3.3.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -50,6 +52,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shrikeh/itech-media-technical-test.git"
+  },
+  "_moduleAliases": {
+    "@app/components": "public/src/components"
   },
   "keywords": [],
   "author": "",
