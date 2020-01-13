@@ -1,5 +1,5 @@
 import React from "react";
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import { Timeline } from "@app/components/Timeline";
 
 describe("<Timeline />", () => {

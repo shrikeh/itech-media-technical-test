@@ -2,12 +2,12 @@
 version: "3.7"
 
 services:
-  frontend:
-    build:
-      context: ./
-      dockerfile: tools/docker/frontend/Dockerfile
-    volumes:
-      - ./:/site
+#  frontend:
+#    build:
+#      context: ./
+#      dockerfile: tools/docker/frontend/Dockerfile
+#    volumes:
+#      - ./:/site
   web-server:
     build:
       context: ./
